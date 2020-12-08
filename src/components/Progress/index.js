@@ -9,10 +9,15 @@ const Progress = ({ value, min, max }) => {
   };
 
   return (
-    <StyledProgress role="progressbar" aria-valuenow={value} aria-valuemin={0} aria-valuemax={max}>
-      <StyledProgressFill data-testid="progress-fill" progress={value} stats={getStats(value)}>
-        {getStats(value)}
-      </StyledProgressFill>
+    <StyledProgress
+      role="progressbar"
+      aria-valuenow={value}
+      aria-valuemin={0}
+      aria-valuemax={max}
+      progress={value}
+      stats={getStats(value)}
+    >
+      <StyledProgressFill data-testid="progress-fill">{getStats(value)}</StyledProgressFill>
       {value}%
     </StyledProgress>
   );

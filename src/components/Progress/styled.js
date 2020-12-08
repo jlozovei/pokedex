@@ -1,17 +1,24 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 import { colors } from 'assets/styled/tokens';
 
 const stats = ['#f34444', '#ff7f0f', '#ffdd57', '#a0e515', '#23cd5e', '#00c2b8'];
 
+export const StyledProgressFill = styled.span`
+  display: block;
+  height: 100%;
+`;
+
 export const StyledProgress = styled.div`
   position: relative;
+  min-width: 100%;
   width: 20rem;
   max-width: 100%;
-  height: 1rem;
+  height: 1.25rem;
   border-radius: 5px;
   background-color: white;
-  border: 1px solid ${colors.grey};
+  border: 1px solid ${(props) => (props.stats ? darken(0.1, stats[props.stats]) : stats[0])};
   overflow: hidden;
 
   &,
@@ -19,11 +26,9 @@ export const StyledProgress = styled.div`
     font-size: 0;
     color: transparent;
   }
-`;
 
-export const StyledProgressFill = styled.span`
-  display: block;
-  width: ${(props) => (props.progress ? props.progress / 2 : 0)}%;
-  height: 100%;
-  background-color: ${(props) => (props.stats ? stats[props.stats] : stats[0])};
+  ${StyledProgressFill} {
+    width: ${(props) => (props.progress ? props.progress / 2 : 0)}%;
+    background-color: ${(props) => (props.stats ? stats[props.stats] : stats[0])};
+  }
 `;
