@@ -9,7 +9,7 @@ const PokeCard = ({ name }) => {
   return (
     <StyledPokeCard>
       {/* sprites from the PokeAPI are too small :( */}
-      <img src={`https://img.pokemondb.net/artwork/${name}.jpg`} alt={name} />
+      <img src={`https://img.pokemondb.net/artwork/${name}.jpg`} alt={titlecase(name)} />
 
       <h1>{titlecase(name)}</h1>
     </StyledPokeCard>
