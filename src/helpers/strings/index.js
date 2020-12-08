@@ -1,5 +1,5 @@
 const unslugify = (string) => {
-  return string.replace(/\-/g, ' ');
+  return string.replace(/-/g, ' ');
 };
 
 const titleCase = (string) => {

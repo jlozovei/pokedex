@@ -21,17 +21,19 @@ const Details = () => {
   }
 
   function getSpecies(id) {
-    getPokemonSpecies(id).then((response) => {
-      const { data } = response;
+    getPokemonSpecies(id)
+      .then((response) => {
+        const { data } = response;
 
-      setGlobalContext({
-        ...globalContext,
-        current: {
-          ...current,
-          species_info: data
-        }
-      }).catch((err) => console.error(err));
-    });
+        setGlobalContext({
+          ...globalContext,
+          current: {
+            ...current,
+            species_info: data
+          }
+        });
+      })
+      .catch((err) => console.error(err));
   }
 
   useEffect(() => {
