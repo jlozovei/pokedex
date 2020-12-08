@@ -1,4 +1,4 @@
-import { unslugify, titleCase } from 'helpers/strings';
+import { unslugify, titlecase, uppercase } from 'helpers/strings';
 
 describe('unslugify', () => {
   it('unslugify two word', () => {
@@ -12,14 +12,31 @@ describe('unslugify', () => {
   });
 });
 
-describe('titleCase', () => {
-  it('title case two words', () => {
-    const slug = 'hello world';
-    expect(titleCase(slug)).toBe('Hello World');
+describe('titlecase', () => {
+  it('titlecase two words', () => {
+    const sentence = 'hello world';
+    expect(titlecase(sentence)).toBe('Hello World');
   });
 
-  it('title case more than two words', () => {
-    const slug = 'hello my world';
-    expect(titleCase(slug)).toBe('Hello My World');
+  it('titlecase more than two words', () => {
+    const sentence = 'hello my world';
+    expect(titlecase(sentence)).toBe('Hello My World');
+  });
+
+  it('titlecase turn into uppercase', () => {
+    const word = 'rpm';
+    expect(titlecase(word)).toBe('RPM');
+  });
+});
+
+describe('uppercase', () => {
+  it('uppercase single word', () => {
+    const word = 'hello';
+    expect(uppercase(word)).toBe('HELLO');
+  });
+
+  it('uppercase sentence', () => {
+    const sentence = 'hello World';
+    expect(uppercase(sentence)).toBe('HELLO WORLD');
   });
 });
