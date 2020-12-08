@@ -6,4 +6,8 @@ const metersToFeet = (m) => {
   return (m * 3.281).toFixed(2);
 };
 
-export { kilogramsToPounds, metersToFeet };
+const formatFeet = (feet) => {
+  return `${String(feet).replace('.', "'")}"`;
+};
+
+export { kilogramsToPounds, metersToFeet, formatFeet };

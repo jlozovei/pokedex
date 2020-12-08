@@ -1,4 +1,4 @@
-import { kilogramsToPounds, metersToFeet } from 'helpers/units';
+import { kilogramsToPounds, metersToFeet, formatFeet } from 'helpers/units';
 
 describe('kilogramsToPounds', () => {
   it('19.5kg to 43.00lbs', () => {
@@ -21,5 +21,17 @@ describe('metersToFeet', () => {
   it('1.70m to 5\'58"', () => {
     const m = 1.7;
     expect(metersToFeet(m)).toBe('5.58');
+  });
+});
+
+describe('formatFeet', () => {
+  it('3.28 to 3\'28"', () => {
+    const feet = 3.28;
+    expect(formatFeet(feet)).toBe('3\'28"');
+  });
+
+  it('1.97m to 1\'97"', () => {
+    const feet = 1.97;
+    expect(formatFeet(feet)).toBe('1\'97"');
   });
 });
