@@ -1,13 +1,13 @@
 {
   "name": "pokedex",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "jlozovei personal pokedex",
   "private": false,
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --watchAll=false",
-    "test:dev": "react-scripts test",
+    "test": "react-scripts test --env=jest-environment-jsdom-sixteen --watchAll=false",
+    "test:dev": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "eject": "react-scripts eject"
   },
   "dependencies": {
@@ -29,6 +29,7 @@
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-prettier": "^3.2.0",
     "husky": "^4.3.5",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
     "lint-staged": "^10.5.3",
     "prettier": "^2.2.1"
   },
