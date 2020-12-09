@@ -2,7 +2,7 @@ import React from 'react';
 import { render, act, screen, waitFor, fireEvent } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { GlobalContext } from 'store';
+import { Provider } from 'store';
 import { getPokemons, getPokemonByName } from 'services';
 
 import { Home } from 'pages/Home';
@@ -23,11 +23,11 @@ jest.mock('../../services', () => ({
 describe('pages/Home', () => {
   it('renders', async () => {
     render(
-      <GlobalContext>
+      <Provider>
         <Router>
           <Home />
         </Router>
-      </GlobalContext>
+      </Provider>
     );
 
     expect(screen.getByTestId('pokemon-logo')).toBeInTheDocument();
@@ -38,11 +38,11 @@ describe('pages/Home', () => {
 
   it('search pokemon', async () => {
     render(
-      <GlobalContext>
+      <Provider>
         <Router>
           <Home />
         </Router>
-      </GlobalContext>
+      </Provider>
     );
 
     const submit = screen.getByText('Search');

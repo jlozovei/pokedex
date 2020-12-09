@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 
-import { Context } from 'store';
+import { useContextState, useContextDispatch } from 'store';
 import { getPokemonByName, getPokemonSpecies } from 'services';
 
 import { unslugify, titlecase } from 'helpers/strings';
@@ -20,8 +20,9 @@ import { Loader } from 'components/Loader';
 import { StyledGrid, StyledColumn, StyledInfoGroup } from './styled';
 
 const Details = () => {
-  const { globalContext, setGlobalContext } = useContext(Context);
-  const { current } = globalContext;
+  const dispatch = useContextDispatch();
+  const { current } = useContextState();
+
   const { pokemonId } = useParams();
   const routerHistory = useHistory();
 
@@ -50,12 +51,9 @@ const Details = () => {
       .then((response) => {
         const { data } = response;
 
-        setGlobalContext({
-          ...globalContext,
-          current: {
-            ...current,
-            species_info: data
-          }
+        dispatch({
+          type: 'species',
+          value: data
         });
 
         setHasSearchedForSpecies(true);
@@ -75,9 +73,9 @@ const Details = () => {
         if (!data) {
           routerHistory.push('/404');
         } else {
-          setGlobalContext({
-            ...globalContext,
-            current: data
+          dispatch({
+            type: 'current',
+            value: data
           });
 
           setTimeout(() => {
@@ -89,8 +87,7 @@ const Details = () => {
         console.error(err);
         routerHistory.push('/404');
       });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [pokemonId, routerHistory, dispatch]);
 
   return (
     <Page>
