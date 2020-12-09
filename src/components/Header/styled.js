@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { StyledContainer } from 'containers/Container/styled';
 
-import { colors } from 'assets/styled/tokens';
+import { colors, fonts } from 'assets/styled/tokens';
 
 export const StyledHeader = styled.header`
   background-color: ${colors.navy};
@@ -46,6 +46,7 @@ export const StyledNav = styled.nav`
 
   a {
     position: relative;
+    font-family: ${fonts.title};
     font-weight: 600;
     color: ${colors.yellow};
     text-decoration: none;

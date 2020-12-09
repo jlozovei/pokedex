@@ -12,9 +12,8 @@ const colors = {
 };
 
 const fonts = {
-  title: '',
-  text: '',
-  mono: ''
+  title: 'Josefin Sans, sans-serif',
+  text: 'Inter, sans-serif'
 };
 
 const viewports = {
