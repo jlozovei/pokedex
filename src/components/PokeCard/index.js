@@ -11,7 +11,7 @@ const PokeCard = ({ name }) => {
     <StyledPokeCard>
       <img src={pokemonImage(name)} alt={titlecase(name)} />
 
-      <h1>{titlecase(name)}</h1>
+      <h1 data-testid="pokemon-name">{titlecase(name)}</h1>
     </StyledPokeCard>
   );
 };
