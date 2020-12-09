@@ -1,5 +1,9 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
+import { StyledPage } from 'containers/Page/styled';
+import { StyledContainer } from 'containers/Container/styled';
+import { StyledFooter } from 'components/Footer/styled';
+
 import ash from 'assets/images/ash.jpg';
 import { colors, viewports } from 'assets/styled/tokens';
 
@@ -23,6 +27,27 @@ export const StyledBody = createGlobalStyle`
       height: 100%;
       background-color: rgba(20, 20, 20, 0.85);
       content: '';
+    }
+
+    ${StyledPage} {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: flex-end;
+      justify-content: center;
+      flex: 1;
+    }
+
+    ${StyledContainer} {
+      flex-basis: 100%;
+    }
+
+    ${StyledFooter} {
+      flex-basis: 100%;
+      color: ${colors.white};
+
+      a {
+        color: ${colors.yellow};
+      }
     }
   }
 `;

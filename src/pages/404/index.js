@@ -7,7 +7,7 @@ import { StyledBody, StyledBox } from './styled';
 
 const Page404 = () => {
   return (
-    <Page>
+    <Page header={false}>
       <StyledBody />
 
       <StyledBox>
