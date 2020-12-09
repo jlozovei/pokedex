@@ -160,6 +160,10 @@ const About = () => {
           <li>Brendan Eich</li>
           <li>Jon Skinner, Will Bond and Cesar Mariniti</li>
           <li>Chris Wanstrath, Tom Preston-Werner, P. J. Hyett, Scott Chacon and Nat Friedman</li>
+          <li>
+            My dear Professor Rodrigo Salles Ribeiro, who taught me a strange thing called{' '}
+            <em>web design and development</em> back in 2011/13.
+          </li>
           <li>The JS community</li>
           <li>
             My dear friends (and awesome developers) Celso Fabri Jr, Daniel Koganas, Daniel Nass and

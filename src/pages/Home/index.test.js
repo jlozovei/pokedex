@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, act, screen, waitFor, fireEvent } from '@testing-library/react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Router } from 'react-router-dom';
+import { createMemoryHistory } from 'history';
 
 import { GlobalContext } from 'store';
 import { getPokemons, getPokemonByName } from 'services';
@@ -22,9 +23,13 @@ jest.mock('../../services', () => ({
 
 describe('pages/Home', () => {
   it('renders', async () => {
+    const history = createMemoryHistory();
+    const route = '/';
+    history.push(route);
+
     render(
       <GlobalContext>
-        <Router>
+        <Router history={history}>
           <Home />
         </Router>
       </GlobalContext>
@@ -37,9 +42,13 @@ describe('pages/Home', () => {
   });
 
   it('search pokemon', async () => {
+    const history = createMemoryHistory();
+    const route = '/';
+    history.push(route);
+
     render(
       <GlobalContext>
-        <Router>
+        <Router history={history}>
           <Home />
         </Router>
       </GlobalContext>
