@@ -7,7 +7,9 @@ import { Details } from 'pages/Details';
 import { Page404 } from 'pages/404';
 
 const Routes = () => (
-  <Router>
+  const basename = '/pokedex';
+
+  <Router basename={basename}>
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/about" component={About} />
