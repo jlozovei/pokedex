@@ -1,7 +1,7 @@
 import { KEYS } from 'constants/localStorage';
 
 const skeleton = {
-  popular: [],
+  firstTwelve: [],
   current: {}
 };
 

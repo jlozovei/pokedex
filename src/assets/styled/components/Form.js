@@ -12,6 +12,14 @@ export const StyledForm = styled.form`
   max-width: 48rem;
   margin: 0 auto;
 
+  label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+
   input {
     flex-basis: 80%;
   }
