@@ -1,14 +1,18 @@
 * {
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif,
-    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
 }
 
 body {
-  min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
+  line-height: 1.4;
+}
+
+body,
+.root {
+  min-height: 100vh;
 }
 
 body,
@@ -20,15 +24,58 @@ h5,
 h6,
 p,
 ul,
+ol,
 li {
   margin: 0;
 }
 
 ul,
-li {
+ol,
+li,
+button {
   padding: 0;
 }
 
 li {
   list-style: none;
+}
+
+button {
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  font: inherit;
+}
+
+table {
+  width: 100%;
+  margin: 1rem 0;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+hr {
+  margin: 4rem 0;
+  height: 1px;
+  background-color: #9f9f9f;
+  border: none;
+}
+
+blockquote {
+  margin: 2rem 0;
+  padding: 1rem 0 1rem 1rem;
+  border-left: 4px solid #d1d2d3;
+  color: #5a5b5c;
+}
+
+.pokemon-logo {
+  background: url('../images/pokemon-logo.png') no-repeat center/contain;
+  font-size: 3.125rem;
+  color: transparent;
 }
