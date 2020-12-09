@@ -1,5 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
+
+import { history } from './history';
 
 import { Home } from 'pages/Home';
 import { About } from 'pages/About';
@@ -7,11 +9,11 @@ import { Details } from 'pages/Details';
 import { Page404 } from 'pages/404';
 
 const Routes = () => (
-  <Router>
+  <Router history={history}>
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/about" component={About} />
-      <Route exact path="/pokemon/:name" component={Details} />
+      <Route exact path="/pokemon/:pokemonId" component={Details} />
 
       <Route path="*" component={Page404} />
     </Switch>
