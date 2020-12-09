@@ -34,6 +34,7 @@ const accessibleFontColor = (backgroundColor) => {
 
 export const StyledPokemonType = styled.span`
   display: inline-block;
+  margin: 0.25rem;
   padding: 0.125rem 0.5rem;
   background-color: ${(props) =>
     props.type && types[props.type] ? lighten(0.15, types[props.type]) : colors.white};
