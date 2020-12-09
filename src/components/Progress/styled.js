@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
 
-import { colors } from 'assets/styled/tokens';
-
 const stats = ['#f34444', '#ff7f0f', '#ffdd57', '#a0e515', '#23cd5e', '#00c2b8'];
 
 export const StyledProgressFill = styled.span`
