@@ -9,7 +9,11 @@ const Footer = () => {
     <StyledFooter>
       <Container>
         <p data-testid="footer-text">
-          Made with <span aria-label="love">❤️</span> by{' '}
+          Made with{' '}
+          <span role="img" aria-label="love">
+            ❤️
+          </span>{' '}
+          and ReactJS by{' '}
           <a href="https://jlozovei.dev" target="_blank" rel="noopener noreferrer">
             jlozovei
           </a>{' '}
