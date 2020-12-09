@@ -89,6 +89,7 @@ const Details = () => {
         console.error(err);
         routerHistory.push('/404');
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
