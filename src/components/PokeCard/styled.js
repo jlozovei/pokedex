@@ -10,10 +10,7 @@ export const StyledPokeCard = styled.div`
   text-align: center;
 
   img {
-    display: block;
-    max-width: 100%;
     margin: 0 auto 1rem;
-    object-fit: contain;
   }
 
   h1 {
