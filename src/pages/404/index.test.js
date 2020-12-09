@@ -1,18 +1,13 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { Router } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import { Page404 } from 'pages/404';
 
 describe('pages/404', () => {
   it('renders', () => {
-    const history = createMemoryHistory();
-    const route = '/404';
-    history.push(route);
-
     render(
-      <Router history={history}>
+      <Router>
         <Page404 />
       </Router>
     );
@@ -24,12 +19,8 @@ describe('pages/404', () => {
   });
 
   it('goes back to home page', () => {
-    const history = createMemoryHistory();
-    const route = '/404';
-    history.push(route);
-
     render(
-      <Router history={history}>
+      <Router>
         <Page404 />
       </Router>
     );

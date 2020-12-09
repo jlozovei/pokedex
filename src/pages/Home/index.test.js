@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, act, screen, waitFor, fireEvent } from '@testing-library/react';
-import { Router } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import { GlobalContext } from 'store';
 import { getPokemons, getPokemonByName } from 'services';
@@ -23,13 +22,9 @@ jest.mock('../../services', () => ({
 
 describe('pages/Home', () => {
   it('renders', async () => {
-    const history = createMemoryHistory();
-    const route = '/';
-    history.push(route);
-
     render(
       <GlobalContext>
-        <Router history={history}>
+        <Router>
           <Home />
         </Router>
       </GlobalContext>
@@ -42,13 +37,9 @@ describe('pages/Home', () => {
   });
 
   it('search pokemon', async () => {
-    const history = createMemoryHistory();
-    const route = '/';
-    history.push(route);
-
     render(
       <GlobalContext>
-        <Router history={history}>
+        <Router>
           <Home />
         </Router>
       </GlobalContext>
@@ -66,7 +57,6 @@ describe('pages/Home', () => {
 
     await waitFor(() => {
       expect(getPokemonByName).toHaveBeenCalledWith('ditto');
-      expect(window.location.href).toBe('http://localhost/pokemon/ditto');
     });
   });
 });

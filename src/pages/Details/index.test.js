@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, act, screen, waitFor, fireEvent } from '@testing-library/react';
-import { Router } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import { GlobalContext } from 'store';
 import { getPokemonByName, getPokemonSpecies } from 'services';
@@ -40,13 +39,9 @@ jest.mock('../../services', () => ({
 
 describe('pages/Details', () => {
   it('renders and get pokemon base info', async () => {
-    const history = createMemoryHistory();
-    const route = '/pokemon/ditto';
-    history.push(route);
-
     render(
       <GlobalContext>
-        <Router history={history}>
+        <Router>
           <Details />
         </Router>
       </GlobalContext>
@@ -60,13 +55,9 @@ describe('pages/Details', () => {
   });
 
   it('search species data', async () => {
-    const history = createMemoryHistory();
-    const route = '/pokemon/ditto';
-    history.push(route);
-
     render(
       <GlobalContext>
-        <Router history={history}>
+        <Router>
           <Details />
         </Router>
       </GlobalContext>

@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 
 import pokeball from 'assets/images/pokeball.png';
-import { colors, viewports } from 'assets/styled/tokens';
+import { colors, fonts, viewports } from 'assets/styled/tokens';
 
 const movingBackground = keyframes`
   from {
