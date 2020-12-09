@@ -79,6 +79,7 @@ const Home = () => {
     firstTwelvePokemons();
 
     setRandomPokemonName(titlecase(pokemons[randomInt(0, pokemons.length - 1)]));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
