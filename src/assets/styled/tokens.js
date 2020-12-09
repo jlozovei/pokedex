@@ -17,7 +17,7 @@ const fonts = {
 };
 
 const viewports = {
-  mobile: '492px',
+  mobile: '532px',
   tablet: '768px',
   desktop: '992px',
   fullhd: '1280px'

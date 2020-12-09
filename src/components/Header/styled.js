@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { StyledContainer } from 'containers/Container/styled';
 
-import { colors, fonts } from 'assets/styled/tokens';
+import { colors, fonts, viewports } from 'assets/styled/tokens';
 
 export const StyledHeader = styled.header`
   background-color: ${colors.navy};
@@ -13,6 +13,13 @@ export const StyledHeader = styled.header`
     flex-flow: row wrap;
     align-items: center;
     justify-content: space-between;
+  }
+
+  @media screen and (max-width: 400px) {
+    ${StyledContainer} {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 `;
 
@@ -30,6 +37,12 @@ export const StyledLogo = styled.div`
 
   span {
     font-size: 1.875rem;
+  }
+
+  @media screen and (max-width: ${viewports.mobile}) {
+    img {
+      max-width: 4rem;
+    }
   }
 `;
 
@@ -77,6 +90,12 @@ export const StyledNav = styled.nav`
         width: 100%;
         background-color: ${colors.yellow};
       }
+    }
+  }
+
+  @media screen and (max-width: ${viewports.mobile}) {
+    a {
+      font-size: 0.75rem;
     }
   }
 `;

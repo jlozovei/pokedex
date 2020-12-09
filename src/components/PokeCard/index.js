@@ -6,12 +6,18 @@ import { pokemonImage } from 'helpers/pokemons';
 
 import { StyledPokeCard } from './styled';
 
-const PokeCard = ({ name }) => {
+const PokeCard = ({ name, children }) => {
   return (
     <StyledPokeCard>
-      <img src={pokemonImage(name)} alt={titlecase(name)} />
+      {children ? (
+        children
+      ) : (
+        <React.Fragment>
+          <img src={pokemonImage(name)} alt={titlecase(name)} />
 
-      <h1 data-testid="pokemon-name">{titlecase(name)}</h1>
+          <h1 data-testid="pokemon-name">{titlecase(name)}</h1>
+        </React.Fragment>
+      )}
     </StyledPokeCard>
   );
 };
@@ -19,9 +25,11 @@ const PokeCard = ({ name }) => {
 export { PokeCard };
 
 PokeCard.defaultProps = {
-  name: 'bulbasaur'
+  name: 'bulbasaur',
+  children: false
 };
 
 PokeCard.propTypes = {
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  children: PropTypes.node
 };

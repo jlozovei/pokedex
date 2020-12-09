@@ -47,11 +47,16 @@ describe('pages/Details', () => {
       </GlobalContext>
     );
 
-    expect(screen.getByTestId('pokemon-name')).toBeInTheDocument();
     expect(screen.getByText('Pokédex Data')).toBeInTheDocument();
     expect(screen.getByText('Species Data')).toBeInTheDocument();
 
-    await waitFor(() => expect(getPokemonByName).toHaveBeenCalled());
+    await waitFor(() => {
+      expect(getPokemonByName).toHaveBeenCalled();
+    });
+
+    await waitFor(() => {
+      expect(screen.getByTestId('pokemon-name')).toBeInTheDocument();
+    });
   });
 
   it('search species data', async () => {

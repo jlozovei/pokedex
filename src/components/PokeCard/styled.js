@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { colors, viewports } from 'assets/styled/tokens';
+import { StyledLoader } from 'components/Loader/styled';
 
 export const StyledPokeCard = styled.div`
   position: relative;
@@ -23,5 +24,9 @@ export const StyledPokeCard = styled.div`
     img {
       margin-bottom: 2rem;
     }
+  }
+
+  ${StyledLoader} {
+    margin: 0 auto;
   }
 `;

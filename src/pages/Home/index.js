@@ -12,6 +12,7 @@ import { randomInt } from 'helpers/numbers';
 
 import { Page } from 'containers/Page';
 import { Container } from 'containers/Container';
+import { Loader } from 'components/Loader';
 import { StyledForm, StyledInput, StyledSubmit } from 'assets/styled/components/Form';
 
 import { StyledSearchContainer, StyledListContainer } from './styled';
@@ -22,6 +23,8 @@ const Home = () => {
 
   const [randomPokemonName, setRandomPokemonName] = useState('');
   const [formError, setFormError] = useState('');
+  const [isLoadingPokemons, setIsLoadingPokemons] = useState(true);
+  const [isFetchingPokemonData, setIsFetchingPokemonData] = useState(false);
 
   const { register, handleSubmit } = useForm();
   const routerHistory = useHistory();
@@ -29,6 +32,8 @@ const Home = () => {
   const onSubmit = async (values) => {
     const { searchterm } = values;
     const pokemonName = searchterm.toLowerCase();
+
+    setIsFetchingPokemonData(true);
 
     getPokemonByName(pokemonName)
       .then((response) => {
@@ -60,6 +65,10 @@ const Home = () => {
             firstTwelve: data?.results || []
           });
         }
+
+        setTimeout(() => {
+          setIsLoadingPokemons(false);
+        }, 1000);
 
         return data;
       } catch (err) {
@@ -97,7 +106,10 @@ const Home = () => {
               placeholder={randomPokemonName}
               ref={register({ required: true })}
             />
-            <StyledSubmit type="submit">Search</StyledSubmit>
+            <StyledSubmit type="submit" isLoading={isFetchingPokemonData}>
+              Search
+              {isFetchingPokemonData && <Loader size="sm" />}
+            </StyledSubmit>
 
             <small>{formError}</small>
           </StyledForm>
@@ -108,17 +120,21 @@ const Home = () => {
         <Container>
           <h2>Or try one of those:</h2>
 
-          <ul>
-            {firstTwelve?.length > 0 &&
-              firstTwelve.map(({ name }) => (
-                <li key={name}>
-                  <Link to={`/pokemon/${name}`}>
-                    <img src={pokemonImage(name)} alt={titlecase(name)} />
-                    {titlecase(name)}
-                  </Link>
-                </li>
-              ))}
-          </ul>
+          {isLoadingPokemons ? (
+            <Loader size="md" />
+          ) : (
+            <ul>
+              {firstTwelve?.length > 0 &&
+                firstTwelve.map(({ name }) => (
+                  <li key={name}>
+                    <Link to={`/pokemon/${name}`}>
+                      <img src={pokemonImage(name)} alt={titlecase(name)} />
+                      {titlecase(name)}
+                    </Link>
+                  </li>
+                ))}
+            </ul>
+          )}
         </Container>
       </StyledListContainer>
     </Page>

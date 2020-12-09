@@ -2,6 +2,7 @@ import styled, { keyframes } from 'styled-components';
 
 import pokeball from 'assets/images/pokeball.png';
 import { colors, fonts, viewports } from 'assets/styled/tokens';
+import { StyledLoader } from 'components/Loader/styled';
 
 const movingBackground = keyframes`
   from {
@@ -43,6 +44,10 @@ export const StyledSearchContainer = styled.div`
 export const StyledListContainer = styled.div`
   padding: 4rem 0;
   text-align: center;
+
+  ${StyledLoader} {
+    margin: 4rem auto;
+  }
 
   ul {
     display: flex;

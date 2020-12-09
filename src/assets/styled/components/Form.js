@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { darken } from 'polished';
+import { lighten, darken } from 'polished';
 
 import { colors } from 'assets/styled/tokens';
+import { StyledLoader } from 'components/Loader/styled';
 
 export const StyledForm = styled.form`
   position: relative;
@@ -61,11 +62,16 @@ export const StyledInput = styled.input`
 `;
 
 export const StyledSubmit = styled.button`
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
   background-color: ${colors.blue};
   border-radius: 0 5px 5px 0;
   font-weight: 600;
   color: ${colors.white};
-  transition: all ease-in-out 200ms;
+  transition: background-color ease-in-out 200ms;
   cursor: pointer;
 
   &:hover {
@@ -74,5 +80,18 @@ export const StyledSubmit = styled.button`
 
   &:focus {
     outline: none;
+  }
+
+  ${(props) =>
+    props.isLoading &&
+    `
+    color: transparent;
+    pointer-events: none;
+    background-color: ${lighten(0.2, colors.blue)};
+  `}
+
+  ${StyledLoader} {
+    position: absolute;
+    border-color: ${colors.white} ${colors.white} ${colors.white} ${darken(0.15, colors.grey)};
   }
 `;

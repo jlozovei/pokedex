@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { colors, viewports } from 'assets/styled/tokens';
+import { StyledLoader } from 'components/Loader/styled';
 
 export const StyledPane = styled.div`
   display: none;
@@ -26,4 +27,8 @@ export const StyledPane = styled.div`
     props.visible &&
     `opacity: 1;
     visiblity: visible;`}
+
+  ${StyledLoader} {
+    margin: 4rem auto;
+  }
 `;
