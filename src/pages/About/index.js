@@ -72,14 +72,6 @@ const About = () => {
             <a href="https://reactrouter.com/" target="_blank" rel="noopener noreferrer">
               react-router-dom
             </a>{' '}
-            and{' '}
-            <a
-              href="https://github.com/ReactTraining/history"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              history
-            </a>{' '}
             to handle all the routing (routes and redirects)
           </li>
           <li>

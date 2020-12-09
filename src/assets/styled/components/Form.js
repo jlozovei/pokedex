@@ -43,6 +43,7 @@ export const StyledForm = styled.form`
 
     &:empty {
       opacity: 0;
+      visibility: hidden;
     }
   }
 `;

@@ -111,7 +111,7 @@ const Home = () => {
               {isFetchingPokemonData && <Loader size="sm" />}
             </StyledSubmit>
 
-            <small>{formError}</small>
+            <small data-testid="form-error">{formError}</small>
           </StyledForm>
         </Container>
       </StyledSearchContainer>
