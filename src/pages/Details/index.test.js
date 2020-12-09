@@ -2,7 +2,7 @@ import React from 'react';
 import { render, act, screen, waitFor, fireEvent } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { GlobalContext } from 'store';
+import { Provider } from 'store';
 import { getPokemonByName, getPokemonSpecies } from 'services';
 
 import { Details } from 'pages/Details';
@@ -40,11 +40,11 @@ jest.mock('../../services', () => ({
 describe('pages/Details', () => {
   it('renders and get pokemon base info', async () => {
     render(
-      <GlobalContext>
+      <Provider>
         <Router>
           <Details />
         </Router>
-      </GlobalContext>
+      </Provider>
     );
 
     expect(screen.getByText('Pokédex Data')).toBeInTheDocument();
@@ -61,11 +61,11 @@ describe('pages/Details', () => {
 
   it('search species data', async () => {
     render(
-      <GlobalContext>
+      <Provider>
         <Router>
           <Details />
         </Router>
-      </GlobalContext>
+      </Provider>
     );
 
     const speciesTabNavigation = screen.getByText('Species Data');

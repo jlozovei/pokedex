@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { GlobalContext } from 'store';
+import { Provider } from 'store';
 
 import App from './App';
 
@@ -9,9 +9,9 @@ import 'assets/css/reset.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalContext>
+    <Provider>
       <App />
-    </GlobalContext>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

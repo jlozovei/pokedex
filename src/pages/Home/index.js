@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
-import { Context } from 'store';
+import { useContextState, useContextDispatch } from 'store';
 import { getPokemons, getPokemonByName } from 'services';
 
 import { pokemons } from 'constants/pokemons';
@@ -18,8 +18,8 @@ import { StyledForm, StyledInput, StyledSubmit } from 'assets/styled/components/
 import { StyledSearchContainer, StyledListContainer } from './styled';
 
 const Home = () => {
-  const { globalContext, setGlobalContext } = useContext(Context);
-  const { firstTwelve } = globalContext;
+  const dispatch = useContextDispatch();
+  const { firstTwelve } = useContextState();
 
   const [randomPokemonName, setRandomPokemonName] = useState('');
   const [formError, setFormError] = useState('');
@@ -59,10 +59,9 @@ const Home = () => {
         const data = payload?.data || {};
 
         if (data) {
-          setGlobalContext({
-            ...globalContext,
-            current: {},
-            firstTwelve: data?.results || []
+          dispatch({
+            type: 'firstTwelve',
+            value: data?.results || []
           });
         }
 
@@ -79,8 +78,7 @@ const Home = () => {
     firstTwelvePokemons();
 
     setRandomPokemonName(titlecase(pokemons[randomInt(0, pokemons.length - 1)]));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch]);
 
   return (
     <Page fluid={true}>
