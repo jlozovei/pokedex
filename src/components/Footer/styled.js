@@ -7,16 +7,19 @@ import { colors, viewports } from 'assets/styled/tokens';
 export const StyledFooter = styled.footer`
   flex-basis: 100%;
   margin-top: auto;
-  padding-bottom: 1rem;
-  text-align: center;
+  padding-bottom: 2rem;
 
   ${StyledContainer} {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     justify-content: flex-start;
-    padding-top: 1rem;
+    padding-top: 2rem;
     border-top: 1px solid ${colors.grey};
+  }
+
+  p {
+    text-align: right;
   }
 
   a {
