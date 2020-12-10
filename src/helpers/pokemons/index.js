@@ -7,4 +7,10 @@ const pokemonImage = (name) => {
   return `https://img.pokemondb.net/artwork/${name}.jpg`;
 };
 
-export { pokemonImage };
+const formatGenerationName = (name) => {
+  const gen = name.split('-')[1];
+
+  return `Generation ${gen.toUpperCase()}`;
+};
+
+export { pokemonImage, formatGenerationName };
