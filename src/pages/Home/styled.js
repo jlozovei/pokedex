@@ -59,6 +59,7 @@ export const StyledListContainer = styled.div`
     li {
       flex-basis: 50%;
       padding: 0.5rem;
+      text-align: center;
 
       a {
         display: flex;
