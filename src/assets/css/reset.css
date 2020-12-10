@@ -32,14 +32,17 @@ h6,
 p,
 ul,
 ol,
-li {
+li,
+button,
+input {
   margin: 0;
 }
 
 ul,
 ol,
 li,
-button {
+button,
+input {
   padding: 0;
 }
 
