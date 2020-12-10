@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { lighten, darken } from 'polished';
 
-import { colors } from 'assets/styled/tokens';
+import { colors, viewports } from 'assets/styled/tokens';
 import { StyledLoader } from 'components/Loader/styled';
 
 export const StyledForm = styled.form`
@@ -21,12 +21,9 @@ export const StyledForm = styled.form`
     visibility: hidden;
   }
 
-  input {
-    flex-basis: 80%;
-  }
-
+  input,
   button {
-    flex-basis: 20%;
+    flex-basis: 100%;
   }
 
   small {
@@ -46,19 +43,33 @@ export const StyledForm = styled.form`
       visibility: hidden;
     }
   }
+
+  @media screen and (min-width: ${viewports.mobile}) {
+    input {
+      flex-basis: 80%;
+    }
+
+    button {
+      flex-basis: 20%;
+    }
+  }
 `;
 
 export const StyledInput = styled.input`
   padding: 1rem;
   background-color: ${colors.white};
   border: 1px solid ${colors.grey};
-  border-radius: 5px 0 0 5px;
+  border-radius: 5px 5px 0 0;
   font-size: 1rem;
   transition: all ease-in-out 200ms;
 
   &:focus {
     outline: none;
     box-shadow: inset 0 0 1px 2px ${colors.blue};
+  }
+
+  @media screen and (min-width: ${viewports.mobile}) {
+    border-radius: 5px 0 0 5px;
   }
 `;
 
@@ -68,8 +79,9 @@ export const StyledSubmit = styled.button`
   flex-flow: row wrap;
   align-items: center;
   justify-content: center;
+  padding: 1rem;
   background-color: ${colors.blue};
-  border-radius: 0 5px 5px 0;
+  border-radius: 0 0 5px 5px;
   font-weight: 600;
   color: ${colors.white};
   transition: background-color ease-in-out 200ms;
@@ -94,5 +106,9 @@ export const StyledSubmit = styled.button`
   ${StyledLoader} {
     position: absolute;
     border-color: ${colors.white} ${colors.white} ${colors.white} ${darken(0.15, colors.grey)};
+  }
+
+  @media screen and (min-width: ${viewports.mobile}) {
+    border-radius: 0 5px 5px 0;
   }
 `;
