@@ -26,12 +26,9 @@ const Header = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink exact activeClassName="active" to="/about">
-                About
+              <NavLink exact activeClassName="active" to="/generations">
+                Generations
               </NavLink>
-            </li>
-            <li>
-              <a href="https://github.com/jlozovei/pokedex">GitHub</a>
             </li>
           </ul>
         </StyledNav>

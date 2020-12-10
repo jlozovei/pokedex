@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Container } from 'containers/Container';
 
@@ -8,6 +9,15 @@ const Footer = () => {
   return (
     <StyledFooter>
       <Container>
+        <ul>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <a href="https://github.com/jlozovei/pokedex">GitHub</a>
+          </li>
+        </ul>
+
         <p data-testid="footer-text">
           Made with{' '}
           <span role="img" aria-label="love">

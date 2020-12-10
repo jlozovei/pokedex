@@ -5,6 +5,7 @@ import { StyledContainer } from 'containers/Container/styled';
 import { colors, fonts, viewports } from 'assets/styled/tokens';
 
 export const StyledHeader = styled.header`
+  flex-basis: 100%;
   background-color: ${colors.navy};
   padding: 1rem;
 
