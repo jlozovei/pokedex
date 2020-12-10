@@ -1,6 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
-import { StyledPage } from 'containers/Page/styled';
 import { StyledContainer } from 'containers/Container/styled';
 import { StyledFooter } from 'components/Footer/styled';
 
@@ -10,13 +9,6 @@ import { colors, viewports } from 'assets/styled/tokens';
 export const StyledBody = createGlobalStyle`
   body {
     background: url(${ash}) no-repeat center/cover;
-
-    .root {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
 
     &:after {
       position: absolute;
@@ -29,20 +21,15 @@ export const StyledBody = createGlobalStyle`
       content: '';
     }
 
-    ${StyledPage} {
-      display: flex;
-      flex-flow: row wrap;
-      align-items: flex-end;
-      justify-content: center;
-      flex: 1;
-    }
-
     ${StyledContainer} {
-      flex-basis: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1
     }
 
     ${StyledFooter} {
-      flex-basis: 100%;
       color: ${colors.white};
 
       a {

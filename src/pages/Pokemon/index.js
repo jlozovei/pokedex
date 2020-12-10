@@ -19,9 +19,9 @@ import { Loader } from 'components/Loader';
 
 import { StyledGrid, StyledColumn, StyledInfoGroup } from './styled';
 
-const Details = () => {
+const Pokemon = () => {
   const dispatch = useContextDispatch();
-  const { current } = useContextState();
+  const { currentPokemon } = useContextState();
 
   const { pokemonId } = useParams();
   const routerHistory = useHistory();
@@ -74,7 +74,7 @@ const Details = () => {
           routerHistory.push('/404');
         } else {
           dispatch({
-            type: 'current',
+            type: 'currentPokemon',
             value: data
           });
 
@@ -93,7 +93,9 @@ const Details = () => {
     <Page>
       <StyledGrid>
         <StyledColumn>
-          <PokeCard name={current.name}>{isLoadingPokemonData && <Loader size="md" />}</PokeCard>
+          <PokeCard name={currentPokemon.name}>
+            {isLoadingPokemonData && <Loader size="md" />}
+          </PokeCard>
         </StyledColumn>
 
         <StyledColumn>
@@ -109,7 +111,7 @@ const Details = () => {
                   label: 'Species Data',
                   onClick: () => {
                     if (!hasSearchedForSpecies) {
-                      getSpecies(current.id);
+                      getSpecies(currentPokemon.id);
                     }
 
                     setTabActive(1);
@@ -132,18 +134,18 @@ const Details = () => {
                             <tr>
                               <td>National Nº</td>
                               <td>
-                                <strong>{padding(current.id)}</strong>
+                                <strong>{padding(currentPokemon.id)}</strong>
                               </td>
                             </tr>
                             <tr>
                               <td>Base Experience</td>
-                              <td>{current.base_experience}</td>
+                              <td>{currentPokemon.base_experience}</td>
                             </tr>
                             <tr>
                               <td>Type</td>
                               <td>
-                                {current?.types &&
-                                  current.types.map(({ type }, index) => (
+                                {currentPokemon?.types &&
+                                  currentPokemon.types.map(({ type }, index) => (
                                     <PokemonType key={index} type={type.name} />
                                   ))}
                               </td>
@@ -151,14 +153,15 @@ const Details = () => {
                             <tr>
                               <td>Height</td>
                               <td>
-                                {current.height / 10}m (
-                                {formatFeet(metersToFeet(current.height / 10))})
+                                {currentPokemon.height / 10}m (
+                                {formatFeet(metersToFeet(currentPokemon.height / 10))})
                               </td>
                             </tr>
                             <tr>
                               <td>Weight</td>
                               <td>
-                                {current.weight / 10}kg ({kilogramsToPounds(current.weight / 10)}
+                                {currentPokemon.weight / 10}kg (
+                                {kilogramsToPounds(currentPokemon.weight / 10)}
                                 lbs)
                               </td>
                             </tr>
@@ -176,8 +179,8 @@ const Details = () => {
                       </h2>
 
                       <ol>
-                        {current.abilities &&
-                          current.abilities.map(({ is_hidden, ability }, index) => (
+                        {currentPokemon.abilities &&
+                          currentPokemon.abilities.map(({ is_hidden, ability }, index) => (
                             <li key={index} className={is_hidden ? 'hidden' : ''}>
                               {titlecase(unslugify(ability.name))}{' '}
                               {is_hidden && <span>(hidden)</span>}
@@ -197,8 +200,8 @@ const Details = () => {
                       <ResponsiveTable>
                         <table>
                           <tbody>
-                            {current.stats &&
-                              current.stats.map(({ base_stat, stat }, index) => (
+                            {currentPokemon.stats &&
+                              currentPokemon.stats.map(({ base_stat, stat }, index) => (
                                 <tr key={index}>
                                   <td style={{ width: '30%' }}>
                                     {titlecase(unslugify(stat.name))}
@@ -224,7 +227,7 @@ const Details = () => {
                   <Loader size="md" />
                 ) : (
                   <React.Fragment>
-                    {current.species_info && (
+                    {currentPokemon.species_info && (
                       <React.Fragment>
                         <StyledInfoGroup>
                           <ResponsiveTable>
@@ -232,30 +235,32 @@ const Details = () => {
                               <tbody>
                                 <tr>
                                   <td>Base Friendship</td>
-                                  <td>{current.species_info.base_happiness}</td>
+                                  <td>{currentPokemon.species_info.base_happiness}</td>
                                 </tr>
                                 <tr>
                                   <td>Capture Rate</td>
-                                  <td>{current.species_info.capture_rate}</td>
+                                  <td>{currentPokemon.species_info.capture_rate}</td>
                                 </tr>
 
-                                {current.species_info?.growth_rate && (
+                                {currentPokemon.species_info?.growth_rate && (
                                   <tr>
                                     <td>Growth Rate</td>
                                     <td>
-                                      {titlecase(unslugify(current.species_info.growth_rate.name))}
+                                      {titlecase(
+                                        unslugify(currentPokemon.species_info.growth_rate.name)
+                                      )}
                                     </td>
                                   </tr>
                                 )}
 
-                                {current.species_info?.genera &&
-                                  current.species_info?.genera.length > 0 && (
+                                {currentPokemon.species_info?.genera &&
+                                  currentPokemon.species_info?.genera.length > 0 && (
                                     <tr>
                                       <td>Species</td>
                                       <td>
                                         {
                                           filterByLanguage({
-                                            source: current.species_info.genera
+                                            source: currentPokemon.species_info.genera
                                           })[0]['genus']
                                         }
                                       </td>
@@ -264,51 +269,68 @@ const Details = () => {
 
                                 <tr>
                                   <td>Gender</td>
-                                  <td>{pokemonGender(current.species_info.gender_rate)}</td>
+                                  <td>{pokemonGender(currentPokemon.species_info.gender_rate)}</td>
                                 </tr>
 
-                                {current.species_info?.egg_groups &&
-                                  current.species_info?.egg_groups.length > 0 && (
+                                {currentPokemon.species_info?.egg_groups &&
+                                  currentPokemon.species_info?.egg_groups.length > 0 && (
                                     <tr>
                                       <td>Egg Groups</td>
                                       <td>
-                                        {current.species_info.egg_groups.map(({ name }, index) => (
-                                          <React.Fragment key={index}>
-                                            {titlecase(name)}
-                                            {index + 1 < current.species_info.egg_groups.length && (
-                                              <React.Fragment>, </React.Fragment>
-                                            )}
-                                          </React.Fragment>
-                                        ))}
+                                        {currentPokemon.species_info.egg_groups.map(
+                                          ({ name }, index) => (
+                                            <React.Fragment key={index}>
+                                              {titlecase(name)}
+                                              {index + 1 <
+                                                currentPokemon.species_info.egg_groups.length && (
+                                                <React.Fragment>, </React.Fragment>
+                                              )}
+                                            </React.Fragment>
+                                          )
+                                        )}
                                       </td>
                                     </tr>
                                   )}
+
+                                {currentPokemon.species_info.generation && (
+                                  <tr>
+                                    <td>Generation</td>
+                                    <td>
+                                      {titlecase(
+                                        unslugify(currentPokemon.species_info.generation.name)
+                                      )}
+                                    </td>
+                                  </tr>
+                                )}
                               </tbody>
                             </table>
                           </ResponsiveTable>
                         </StyledInfoGroup>
 
-                        {current.species_info?.names && current.species_info?.names.length > 0 && (
-                          <StyledInfoGroup>
-                            <h2>
-                              <span role="img" aria-label="Label">
-                                🔖
-                              </span>{' '}
-                              Names in other languages
-                            </h2>
+                        {currentPokemon.species_info?.names &&
+                          currentPokemon.species_info?.names.length > 0 && (
+                            <StyledInfoGroup>
+                              <h2>
+                                <span role="img" aria-label="Label">
+                                  🔖
+                                </span>{' '}
+                                Names in other languages
+                              </h2>
 
-                            <ul>
-                              {current.species_info.names.map(({ name, language }, index) => (
-                                <li key={index}>
-                                  {name} ({language.name})
-                                </li>
-                              ))}
-                            </ul>
-                          </StyledInfoGroup>
-                        )}
+                              <ul>
+                                {currentPokemon.species_info.names.map(
+                                  ({ name, language }, index) => (
+                                    <li key={index}>
+                                      {name} ({language.name})
+                                    </li>
+                                  )
+                                )}
+                              </ul>
+                            </StyledInfoGroup>
+                          )}
 
-                        {current.species_info?.pokedex_numbers &&
-                          current.species_info?.pokedex_numbers.length > 0 && (
+                        {currentPokemon.species_info?.pokedex_numbers &&
+                          currentPokemon.species_info?.pokedex_numbers.length > 0 && (
                             <StyledInfoGroup>
                               <h2>
                                 <span role="img" aria-label="Entries">
@@ -320,7 +342,7 @@ const Details = () => {
                               <ResponsiveTable>
                                 <table>
                                   <tbody>
-                                    {current.species_info.pokedex_numbers.map(
+                                    {currentPokemon.species_info.pokedex_numbers.map(
                                       ({ pokedex, entry_number }, index) => (
                                         <tr key={index}>
                                           <td>{titlecase(unslugify(pokedex.name))}</td>
@@ -346,4 +368,4 @@ const Details = () => {
   );
 };
 
-export { Details };
+export { Pokemon };

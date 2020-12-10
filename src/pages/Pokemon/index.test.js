@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'store';
 import { getPokemonByName, getPokemonSpecies } from 'services';
 
-import { Details } from 'pages/Details';
+import { Pokemon } from 'pages/Pokemon';
 
 jest.mock('../../services', () => ({
   getPokemonByName: jest.fn(() =>
@@ -37,12 +37,12 @@ jest.mock('../../services', () => ({
   )
 }));
 
-describe('pages/Details', () => {
+describe('pages/Pokemon', () => {
   it('renders and get pokemon base info', async () => {
     render(
       <Provider>
         <Router>
-          <Details />
+          <Pokemon />
         </Router>
       </Provider>
     );
@@ -63,7 +63,7 @@ describe('pages/Details', () => {
     render(
       <Provider>
         <Router>
-          <Details />
+          <Pokemon />
         </Router>
       </Provider>
     );

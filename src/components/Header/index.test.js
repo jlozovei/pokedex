@@ -14,6 +14,7 @@ describe('components/Header', () => {
 
     expect(screen.getByAltText('jlozovei')).toBeInTheDocument();
     expect(screen.getByAltText('PokéAPI')).toBeInTheDocument();
-    expect(screen.getByText('GitHub')).toBeInTheDocument();
+
+    expect(screen.getByText('Home')).toBeInTheDocument();
   });
 });

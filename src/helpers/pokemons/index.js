@@ -1,3 +1,6 @@
+import { pokemons } from 'constants/pokemons';
+import { randomInt } from 'helpers/numbers';
+
 const pokemonImage = (name) => {
   if (!name) {
     throw new Error('pokemonImage need a name argument');
@@ -7,4 +10,14 @@ const pokemonImage = (name) => {
   return `https://img.pokemondb.net/artwork/${name}.jpg`;
 };
 
-export { pokemonImage };
+const formatGenerationName = (name) => {
+  const gen = name.split('-')[1];
+
+  return `Generation ${gen.toUpperCase()}`;
+};
+
+const getRandomPokemonName = () => {
+  return pokemons[randomInt(0, pokemons.length - 1)];
+};
+
+export { pokemonImage, formatGenerationName, getRandomPokemonName };

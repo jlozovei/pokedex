@@ -5,10 +5,8 @@ import { useForm } from 'react-hook-form';
 import { useContextState, useContextDispatch } from 'store';
 import { getPokemons, getPokemonByName } from 'services';
 
-import { pokemons } from 'constants/pokemons';
 import { titlecase } from 'helpers/strings';
-import { pokemonImage } from 'helpers/pokemons';
-import { randomInt } from 'helpers/numbers';
+import { pokemonImage, getRandomPokemonName } from 'helpers/pokemons';
 
 import { Page } from 'containers/Page';
 import { Container } from 'containers/Container';
@@ -53,7 +51,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    async function firstTwelvePokemons() {
+    async function searchForPokemons() {
       try {
         const payload = await getPokemons();
         const data = payload?.data || {};
@@ -75,9 +73,9 @@ const Home = () => {
       }
     }
 
-    firstTwelvePokemons();
+    searchForPokemons();
 
-    setRandomPokemonName(titlecase(pokemons[randomInt(0, pokemons.length - 1)]));
+    setRandomPokemonName(titlecase(getRandomPokemonName()));
   }, [dispatch]);
 
   return (

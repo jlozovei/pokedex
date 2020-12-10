@@ -7,17 +7,17 @@ const ContextDispatch = React.createContext();
 
 function reducer(state, action) {
   switch (action.type) {
-    case 'current': {
+    case 'currentPokemon': {
       return {
         ...state,
-        current: action.value
+        currentPokemon: action.value
       };
     }
     case 'species': {
       return {
         ...state,
-        current: {
-          ...state.current,
+        currentPokemon: {
+          ...state.currentPokemon,
           species_info: action.value
         }
       };
@@ -28,10 +28,23 @@ function reducer(state, action) {
         firstTwelve: action.value
       };
     }
-    case 'cleanCurrent': {
+    case 'generations': {
       return {
         ...state,
-        current: {}
+        generations: action.value
+      };
+    }
+    case 'currentGeneration': {
+      return {
+        ...state,
+        currentGeneration: action.value
+      };
+    }
+    case 'clear': {
+      return {
+        ...state,
+        currentPokemon: {},
+        currentGeneration: {}
       };
     }
     default: {

@@ -1,45 +1,7 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
-import pokeball from 'assets/images/pokeball.png';
 import { colors, viewports } from 'assets/styled/tokens';
 import { StyledLoader } from 'components/Loader/styled';
-
-const movingBackground = keyframes`
-  from {
-    background-position: 0 0;
-  }
-
-  to {
-    background-position: 0 156px;
-  }
-`;
-
-export const StyledSearchContainer = styled.div`
-  position: relative;
-  padding: 12rem 0;
-  background-color: ${colors.blue};
-  color: ${colors.white};
-  text-align: center;
-
-  h1 {
-    margin-bottom: 2rem;
-    font-size: 3rem;
-  }
-
-  &:before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-color: ${colors.navy};
-    background-image: url(${pokeball});
-    background-position: left top;
-    content: '';
-    animation: ${movingBackground} linear 20s infinite;
-  }
-`;
 
 export const StyledListContainer = styled.div`
   padding: 4rem 0;
@@ -59,7 +21,6 @@ export const StyledListContainer = styled.div`
     li {
       flex-basis: 50%;
       padding: 0.5rem;
-      text-align: center;
 
       a {
         display: flex;
