@@ -1,4 +1,5 @@
-import { pokemonImage, formatGenerationName } from 'helpers/pokemons';
+import { pokemonImage, formatGenerationName, getRandomPokemonName } from 'helpers/pokemons';
+import { pokemons } from 'constants/pokemons';
 
 describe('pokemonImage', () => {
   it('should return image URL', () => {
@@ -23,5 +24,13 @@ describe('formatGenerationName', () => {
     const generation = formatGenerationName('generation-iv');
 
     expect(generation).toBe('Generation IV');
+  });
+});
+
+describe('getRandomPokemonName', () => {
+  it('should return random name', () => {
+    const random = getRandomPokemonName();
+
+    expect(pokemons).toContain(random);
   });
 });
