@@ -43,10 +43,14 @@ const Home = () => {
         } else {
           setFormError(`No Pokémon found with ${searchterm}. Try once again!`);
         }
+
+        setIsFetchingPokemonData(false);
       })
       .catch((err) => {
         console.error(err);
         setFormError(`No Pokémon found with ${searchterm}. Try once again!`);
+
+        setIsFetchingPokemonData(false);
       });
   };
 
