@@ -1,4 +1,4 @@
-# jlozovei's Pokédex
+# jlozovei's Pokédex :joystick:
 This is my implementation of the Pokédex, using the [PokeAPI](https://pokeapi.co/). :rocket:  
 It's available at [jlozovei.github.io/pokedex](https://jlozovei.github.io/pokedex).
 
