@@ -1,5 +1,7 @@
 import React, { useState, useReducer, useEffect } from 'react';
 
+import { KEYS } from 'constants/localStorage';
+
 import { initialValues } from './initialValues';
 
 const ContextState = React.createContext();
@@ -59,6 +61,7 @@ function Provider({ children }) {
 
   useEffect(() => {
     setValue(state);
+    localStorage.setItem(KEYS.context, JSON.stringify(state));
   }, [state]);
 
   return (
